@@ -84,5 +84,4 @@ test:
 #
 production:
   <<: *default
-  database: piazza_production
   url: <%= ENV['DATABASE_URL'] %>
