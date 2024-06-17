@@ -10,4 +10,6 @@ en:
                  password:
                     blank: "cannot be blank"
                     too_short: "is too short (minimum is 8 characters required)"
+                 password_confirmation:
+                    confirmation: "Password did't match with confirmation"
               
