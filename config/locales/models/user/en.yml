@@ -1,0 +1,13 @@
+en:
+   activerecord: 
+      errors:
+        models:
+           user:
+              attributes:
+                 email:
+                    blank: "cannot be blank"
+                    invalid: "is invalid"
+                 password:
+                    blank: "cannot be blank"
+                    too_short: "is too short (minimum is 8 characters required)"
+              
