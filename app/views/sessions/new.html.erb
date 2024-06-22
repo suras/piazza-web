@@ -1,0 +1,26 @@
+<% content_for :title, t(".title")%>
+
+<layout-columns class="columns is-centered">
+  <layout-clumn class = "column box is-5 mt-6 p-5 m-4">
+    <h1 class ="title has-text-centered">
+      <%= t(".title")%>    
+    </h1>
+    
+    <%= form_with( url: login_path, scope: :user, class: "is-flex is-flex-direction-column") do |form|%>
+       <div class="block">
+          <%= form.label :email, class: "label" %>
+          <%= form.text_field :email, class: "input"%>
+       </div>
+        <div class="block">
+          <%= form.label :passwword, class: "label" %>
+          <%= form.password_field :password, class: "input"%>
+       </div>
+       <div class="block">
+        <%= form.submit t(".submit"), class: "button is-primary is-large
+              is-align-self-flex-end mb-3 mt-3"%>
+       </div> 
+    <% end %>
+
+
+  </layout-column>
+</layout-columns>

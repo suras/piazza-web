@@ -15,4 +15,8 @@ Rails.application.routes.draw do
 
   post "sign_up", to: "users#create"
 
+  get "login", to: "sessions#new"
+
+  post "login", to: "sessions#create"
+
 end
