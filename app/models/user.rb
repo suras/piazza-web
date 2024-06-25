@@ -1,31 +1,27 @@
 class User < ApplicationRecord
+
+  include Authentication
+  
   validates :name, presence: true, length: { maximum: 30 }
   validates :email, format: { with: URI::MailTo::EMAIL_REGEXP },
                     uniqueness: { case_sensitive: false }
 
-
-
   has_many :memberships, dependent: :destroy
   has_many :organizations, through: :memberships
-  has_many :app_sessions
 
   normalizes :name, with: ->(name) { name.strip }
   normalizes :email, with: ->(email) { email.strip.downcase }  
 
-  has_secure_password
+  before_validation :strip_extraneous_spaces
 
-  validates :password, presence: true, length: { minimum: 8}
 
-  def self.create_app_session(email:, password:)
-    user = User.authenticate_by(email: email, password: password)
-    user.app_sessions.create if user.present?
-  end
 
-  def authenticate_app_session(app_session_id, token)
-    app_sessions.find(app_session_id).authenticate_token(token)
 
-  rescue ActiveRecord::RecordNotFound
-    nil  
+  private 
+
+  def strip_extraneous_spaces
+    self.name = self.name&.strip
+    self.email = self.email&.strip
   end
 
 end
