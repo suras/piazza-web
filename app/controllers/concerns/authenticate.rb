@@ -28,7 +28,7 @@ module Authenticate
             skip_before_action :require_login, options
         end
 
-        def allow_unauthenticated
+        def allow_unauthenticated(**options)
             skip_before_action :require_login, options
         end    
 
