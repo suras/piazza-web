@@ -4,5 +4,7 @@ en:
       title: Log In
       submit: Login
     create:
-      success: "You have successfully logged in. "
-      incorrect_details: "Incorrect email or password."  
+      success: You have successfully logged in.
+      incorrect_details: Incorrect email or password.
+    destroy:
+      success: You've logged out successfully!   
