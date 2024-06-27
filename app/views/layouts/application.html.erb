@@ -11,7 +11,10 @@
   </head>
 
   <body>
+    <%=  render "application/navbar" %>
     <%=  render "application/flashes"%>
-    <%= yield %>
+    <main>
+      <%= yield %>
+    </main>  
   </body>
 </html>
