@@ -16,6 +16,10 @@
           <%= form.password_field :password, class: "input"%>
        </div>
        <div class="block">
+          <%= form.label :remember_me, "Remember Me" %>
+          <%= form.check_box :remember_me, {}, true, false %>
+       </div>
+       <div class="block">
         <%= form.submit t(".submit"), class: "button is-primary is-large
               is-align-self-flex-end mb-3 mt-3"%>
        </div> 
