@@ -87,4 +87,22 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
      end
 
 
+     test "can update user details" do
+        @user = users(:jerry)
+
+        log_in @user
+        
+        patch profile_path, params: {
+           user: {
+              name: "Jerry Sienfield"
+           }
+        }
+
+        assert_redirected_to profile_path 
+
+        assert_equal "Jerry Sienfield", @user.reload.name
+
+     end
+
+
 end
