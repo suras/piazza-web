@@ -43,8 +43,11 @@
                 <%= form.password_field :password, class: "input" %>
                 </div>
                 <%= form.submit t(".change_password_button"),class: "button is-primary is-align-self-flex-end mb-3 mt-3" %>
+                <%= render "application/flashes" if turbo_frame_request? %>
             <% end %>
-              <%= render "application/flashes" if turbo_frame_request? %>
         </layout-column>
     </layout-columns>
 <% end %>
+
+
+ 

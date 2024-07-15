@@ -63,6 +63,59 @@ class UsersTest < ApplicationSystemTestCase
       assert_selector "#current_user_name", text: "Jerry Seinfeld"
   end
 
+  test "can logout" do
+    log_in(users(:jerry))
+
+    find('#current_user_name').hover  
+      
+    click_on I18n.t("application.navbar.logout")
+
+    assert_current_path root_path
+    assert_selector ".notification", text: I18n.t("sessions.destroy.success")
+  end
+
+
+  test "can change password with correct password challenge" do
+    log_in(users(:jerry))
+
+    visit profile_path
+
+    fill_in :user_password_challenge, with: "password"
+    fill_in :user_password, with: "new_password"
+
+    click_button I18n.t("users.show.change_password_button")
+
+    assert_selector "form .notification", text: I18n.t("users.passwords.update.success")
+end
+
+
+test "cannot change password with incorrect password challenge" do
+  log_in(users(:jerry))
+
+  visit profile_path
+
+  fill_in :user_password_challenge, with: "password123"
+  fill_in :user_password, with: "new_password"
+
+  click_button I18n.t("users.show.change_password_button")
+
+  assert_selector ".is-danger", text: I18n.t('activerecord.errors.models.user.attributes.password_challenge.invalid')
+end
+
 
 
 end
+
+
+#  within("#change_password") do
+# fill_in I18n.t("users.show.current_password"), with: "password"  # Current password
+# fill_in I18n.t("users.show.new_password"), with: "new_password"  # New password
+# click_button I18n.t("users.show.change_password_button")
+# end 
+# 
+#
+#The fill_in method in Rails system tests can work with several different identifiers:
+
+# The label text
+# The input's id
+# The input's name

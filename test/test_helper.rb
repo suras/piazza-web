@@ -23,3 +23,7 @@ class ActionDispatch::IntegrationTest
   include AuthenticationHelpers
 
 end
+
+class ActionDispatch::SystemTestCase
+  include SystemAuthenticationHelper
+end
