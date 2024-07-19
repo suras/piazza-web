@@ -89,7 +89,17 @@ Rails.application.configure do
   # Skip DNS rebinding protection for the default health check endpoint.
   # config.host_authorization = { exclude: ->(request) { request.path == "/up" } }
   config.action_mailer.default_url_options = {
-    host: "https://piazza-web-bzar.onrender.com",
+    host: ENV["DOMAIN_NAME"],
     protocol: "https"
+  }
+
+  config.outbound_email_domain = ENV["OUTBOUND_EMAIL_DOMAIN"]
+
+  config.action_mailer.smtp_settings = {
+      address:"smtp.sendgrid.net",
+      port:587,
+      user_name:"apikey",
+      password:Rails.application.credentials.sendgrid_api_key,
+      authentication: :login
   }
 end

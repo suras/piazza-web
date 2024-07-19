@@ -66,4 +66,6 @@ Rails.application.configure do
     host: "example.com",
     protocol: "http"
   }
+
+  config.outbound_email_domain = "test.com"
 end
