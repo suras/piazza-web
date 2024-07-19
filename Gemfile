@@ -65,6 +65,8 @@ group :development do
   # gem "spring"
 
   gem "i18n-debug"
+
+  gem "letter_opener", "~> 1.8"
 end
 
 group :test do

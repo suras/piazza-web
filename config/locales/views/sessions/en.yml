@@ -3,6 +3,7 @@ en:
     new:
       title: Log In
       submit: Login
+      password_reset: Forgot your password?
     create:
       success: You have successfully logged in.
       incorrect_details: Incorrect email or password.

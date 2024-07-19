@@ -1,7 +1,7 @@
 class User < ApplicationRecord
 
-  include Authentication
-  
+  include Authentication, PasswordReset
+
   validates :name, presence: true, length: { maximum: 30 }
   validates :email, format: { with: URI::MailTo::EMAIL_REGEXP },
                     uniqueness: { case_sensitive: false }
@@ -14,9 +14,7 @@ class User < ApplicationRecord
 
   before_validation :strip_extraneous_spaces
 
-
-
-
+  
   private 
 
   def strip_extraneous_spaces
