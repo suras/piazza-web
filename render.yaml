@@ -18,4 +18,12 @@ databases:
   - name: piazza-db
     plan: free
     postgresMajorVersion: 14
+
+envVarGroups:
+    - name: domains
+    envVars:
+      - key: DOMAIN_NAME
+        value: your-domain-here.com
+      - key: OUTBOUND_EMAIL_DOMAIN
+        value: your-domain-here.com    
         

@@ -6,7 +6,7 @@ en:
         info: >
           We'll send you an email with instructions to
           reset your password.
-          email_label: Enter your email address
+        email_label: Enter your email address
         submit: Send password reset email
       create:
         title: Email sent!

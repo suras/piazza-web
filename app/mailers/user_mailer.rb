@@ -9,4 +9,10 @@ class UserMailer < ApplicationMailer
 
     mail subject: t(".subject")
   end
+
+  def activation(token)
+    @activation_token = token
+
+    mail subject: t(".subject")
+  end
 end

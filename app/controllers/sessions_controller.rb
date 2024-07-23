@@ -17,7 +17,7 @@ class SessionsController < ApplicationController
             redirect_to root_path, status: :see_other  
         else 
            flash.now[:danger] = t(".incorrect_details")
-           render :new, status: :unprocessable_content 
+           render "sessions/new", status: :unprocessable_content 
         end    
     end 
     

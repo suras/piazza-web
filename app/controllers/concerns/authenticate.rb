@@ -7,6 +7,8 @@ module Authenticate
 
       before_action :require_login, unless: :logged_in?
 
+      before_action :check_user_verification, if: :logged_in?
+
       helper_method :logged_in?
     end     
 
@@ -31,6 +33,10 @@ module Authenticate
 
       def logged_in?
         Current.user.present?
+      end
+
+      def check_user_verification
+        require_activation unless Current.user.verified
       end
 
       class_methods do
@@ -73,5 +79,12 @@ module Authenticate
          render "sessions/new", status: :unauthorized
 
        end
+
+
+       def require_activation
+        log_out
+        flash.now[:notice] = t("activation_required")
+        render "sessions/new", status: :unauthorized
+      end
 
 end

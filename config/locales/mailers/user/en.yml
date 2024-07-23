@@ -8,3 +8,9 @@ en:
         It's valid for 2 hours.
         If you didn't request this, you can safely ignore this email.
       button: Set a new password
+    activation:
+      subject: Your Piazza Activation Link
+      heading: Activate your Piazza Account
+      body: >
+        Acitvate Your Piazza Account
+      button: Activate 

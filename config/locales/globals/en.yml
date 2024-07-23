@@ -1,3 +1,4 @@
 en: 
   piazza: Piazza
   login_required: You must be logged in to access this page.
+  activation_required: "Please activate your account by clicking on the activation link sent to your email"

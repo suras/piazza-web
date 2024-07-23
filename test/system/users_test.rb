@@ -1,6 +1,11 @@
 require "application_system_test_case"
 
 class UsersTest < ApplicationSystemTestCase
+
+
+  setup do
+    ActionMailer::Base.deliveries.clear
+  end
   test "new user can sign up" do
     visit root_path
 
@@ -21,11 +26,55 @@ class UsersTest < ApplicationSystemTestCase
 
     click_on I18n.t("users.new.sign_up")
 
-    assert_current_path root_path
+    # assert_current_path root_path  # due to new activation user change
     assert_selector ".notification", text: I18n.t("users.create.welcome", name: "Newman")
     assert_selector ".navbar-dropdown", visible: false
-  end  
+  end 
   
+  
+  test "newly created user need to activate before loggining in" do
+
+    visit root_path
+
+    click_on I18n.t("application.navbar.sign_up")
+    
+    fill_in User.human_attribute_name(:name), with: "activation_test"
+    fill_in User.human_attribute_name(:email), with: "activation_test@example.com"
+    fill_in User.human_attribute_name(:password), with: "password"
+    fill_in User.human_attribute_name(:password_confirmation), with: "password"
+
+    click_on I18n.t("users.new.sign_up")
+
+    visit root_path
+
+    click_on I18n.t("application.navbar.login")
+
+    fill_in User.human_attribute_name(:email), with: "activation_test@example.com"
+    fill_in User.human_attribute_name(:password), with: "password"
+
+    click_button I18n.t("sessions.new.submit")
+
+    assert_selector ".notification.is-notice", text: I18n.t("activation_required")
+
+    activation_path = extract_primary_link_from_last_mail
+    visit activation_path
+
+    visit root_path
+
+    click_on I18n.t("application.navbar.login")
+    fill_in User.human_attribute_name(:email), with: "activation_test@example.com"
+    fill_in User.human_attribute_name(:password), with: "password"
+    click_button I18n.t("sessions.new.submit")
+
+
+    assert_current_path root_path
+    assert_selector ".notification", text: I18n.t("sessions.create.success")
+    assert_selector ".navbar-dropdown", visible: false
+
+
+  end
+    
+
   test "existing user can login" do
     visit root_path
 

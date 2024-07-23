@@ -1,0 +1,8 @@
+en:
+  users:
+     activation:
+         show: 
+            success: "Account Successfully Activated"
+            error: "Activation failed due to incorrect token"
+            already_verified: "Account already verified"
+            
