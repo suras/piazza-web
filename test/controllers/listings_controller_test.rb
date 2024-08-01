@@ -11,7 +11,8 @@ class ListingsControllerTest < ActionDispatch::IntegrationTest
         post listings_path, params: {
           listing: {
               title: Faker::Commerce.product_name,
-              price: Faker::Commerce.price.floor
+              price: Faker::Commerce.price.floor,
+              condition: "mint"
             }
           }  
        end
@@ -24,7 +25,8 @@ class ListingsControllerTest < ActionDispatch::IntegrationTest
         post listings_path, params: {
           listing: {
               title: "title",
-              price: 300
+              price: 300,
+              condition: "mint"
             }
           }  
       end
@@ -38,7 +40,8 @@ class ListingsControllerTest < ActionDispatch::IntegrationTest
     patch listing_path(@listing), params: {
         listing: {
           title: new_title,
-          price: @listing.price
+          price: @listing.price,
+          condition: "mint"
         }
     }
     assert_redirected_to listing_path(@listing)
@@ -51,7 +54,8 @@ class ListingsControllerTest < ActionDispatch::IntegrationTest
       patch listing_path(@listing), params: {
         listing: {
            title: @listing.title,
-           price: "NaN"
+           price: "NaN",
+           condition: "mint"
         }
       }
       assert_response :unprocessable_entity
