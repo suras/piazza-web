@@ -8,5 +8,16 @@ class Listing < ApplicationRecord
 
   validates :title, length: { in: 10..100 }
   validates :price, numericality: { only_integer: true }
+  validates :tags, length: { in: 1..5 }
+
+  before_save :downcase_tags
+
+
+
+  private 
+
+    def downcase_tags
+      self.tags = tags.map(&:downcase)
+    end
 
 end

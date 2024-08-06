@@ -7,7 +7,7 @@ module HumanEnum
       model_key = model_name.i18n_key
       enum_key = enum_name.to_s.pluralize
 
-      I18n.t("active_record.attributes.#{model_key}.#{enum_key}.#{enum_value}",
+      I18n.t("activerecord.attributes.#{model_key}.#{enum_key}.#{enum_value}",
        default: enum_name.to_s.humanize)
       
     end
