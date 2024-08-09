@@ -2,6 +2,8 @@ class Listing < ApplicationRecord
   belongs_to :creator, class_name: "User"
   belongs_to :organization
 
+  include HasAddress, PermittedAttributes
+
   enum condition: {
     mint: "mint", near_mint: "near_mint", used: "used", defective: "defective"
   }

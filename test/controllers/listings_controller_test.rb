@@ -12,7 +12,8 @@ class ListingsControllerTest < ActionDispatch::IntegrationTest
           listing: {
               title: Faker::Commerce.product_name,
               price: Faker::Commerce.price.floor,
-              condition: "mint"
+              condition: "mint",
+              tags: ["test"]
             }
           }  
        end
@@ -26,7 +27,8 @@ class ListingsControllerTest < ActionDispatch::IntegrationTest
           listing: {
               title: "title",
               price: 300,
-              condition: "mint"
+              condition: "mint",
+              tags: ["test"]
             }
           }  
       end
@@ -41,7 +43,8 @@ class ListingsControllerTest < ActionDispatch::IntegrationTest
         listing: {
           title: new_title,
           price: @listing.price,
-          condition: "mint"
+          condition: "mint",
+          tags: ["test"]
         }
     }
     assert_redirected_to listing_path(@listing)
@@ -55,11 +58,28 @@ class ListingsControllerTest < ActionDispatch::IntegrationTest
         listing: {
            title: @listing.title,
            price: "NaN",
-           condition: "mint"
+           condition: "mint",
+           tags: ["test"]
         }
       }
       assert_response :unprocessable_entity
    end
+
+   test "can't create  a listing without tags" do
+    assert_no_difference "Listing.count" do
+      post listings_path, params: {
+        listing: {
+            title: Faker::Commerce.product_name,
+            price: 123,
+            condition: nil,
+            tags: nil
+          }
+        }  
+     end
+     assert_response :unprocessable_entity
+     assert_select "label[for='listing_tags'] ~ .is-danger", I18n.t("activerecord.errors.models.listing.attributes.tags.too_short")
+    end
+
     test "can delete a listing" do
        @listing = listings(:auto_listing_1_jerry)
        assert_difference "Listing.count", -1 do

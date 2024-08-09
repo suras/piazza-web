@@ -49,6 +49,8 @@ gem "bootsnap", require: false
 
 gem "premailer-rails", "~> 1.11"
 
+gem "iso_country_codes", "~> 0.7.8"
+
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
   gem "debug", platforms: %i[ mri windows ]

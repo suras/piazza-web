@@ -19,6 +19,13 @@
                 <%= @listing.creator.name %>
                 </dd>
                 </dl>
+                <dt class="has-text-grey">
+                <%= t(".location") %>
+                </dt>
+                    <dd class="has-text-weight-semibold is-size-5">
+                        <%= @listing.address.redacted %>
+                    </dd>
+                </dl>
                 <layout-group class="buttons mt-6">
                     <%= button_to "#",
                     class: "button is-secondary is-medium" do %>
