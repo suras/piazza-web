@@ -1,4 +1,7 @@
 module ApplicationHelper
+  include Pagy::Frontend
+
+
   def title
     return t("piazza") unless content_for?(:title)
 

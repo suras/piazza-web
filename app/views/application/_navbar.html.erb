@@ -21,7 +21,7 @@
             <%= link_to Current.user.name, profile_path, id: "current_user_name", class: "navbar-link" %>
             <div class="navbar-dropdown is-right">
                 <%= link_to t(".profile"),profile_path, class: "navbar-item" %>
-                <%= link_to t(".my_ads"),"#", class: "navbar-item" %>
+                <%= link_to t(".my_ads"),my_listings_path, class: "navbar-item" %>
                 <%= link_to t(".saved_ads"),"#", class: "navbar-item" %>
                 <hr class="navbar-divider">
                 <%= link_to t(".logout"),logout_path, class: "navbar-item", data: {turbo_method: :delete} %>

@@ -22,7 +22,7 @@ default: &default
 
 development:
   <<: *default
-  username: surendar
+  username: suras
   password: postgres
   database: piazza_development
 
@@ -58,7 +58,7 @@ development:
 # Do not set this db to the same as development or production.
 test:
   <<: *default
-  username: surendar
+  username: suras
   password: postgres
   database: piazza_test
 

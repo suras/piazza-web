@@ -25,6 +25,8 @@ Rails.application.routes.draw do
 
   resources :listings, except: :index
 
+  resources :my_listings, only: :show
+
   namespace :users do
     patch "change_password", to: "passwords#update"
     resources :password_resets, only: [:new, :create, :update, :edit]
