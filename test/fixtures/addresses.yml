@@ -4,13 +4,23 @@
 # model remove the "{}" from the fixture names and add the columns immediately
 # below each fixture, per the syntax in the comments below
 #
-# <% 10.times do |n| %>
-address_1_jerry:
-  addressable: auto_listing_1_jerry (Listing)
+<% 10.times do |n| %>
+address_<%= n %>_jerry:
+  addressable: auto_listing_<%= n %>_jerry (Listing)
   line_1: <%= Faker::Address.building_number %>
   line_2: <%= Faker::Address.street_address %>
   city: <%= Faker::Address.city %>
   country: GB
   postcode: <%= Faker::Address.postcode %>
-# <% end %>  
+<% end %>  
+
+<% 25.times do |n| %>
+address_<%= n %>_kramer:
+  addressable: auto_listing_<%= n %>_kramer (Listing)
+  line_1: <%= Faker::Address.building_number %>
+  line_2: <%= Faker::Address.street_address %>
+  city: <%= Faker::Address.city %>
+  country: GB
+  postcode: <%= Faker::Address.postcode %>
+<% end %> 
 

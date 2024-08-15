@@ -8,6 +8,7 @@ kramer:
   name: Kramer
   email: kramer@example.com
   password_digest: <%= BCrypt::Password.create("password") %>
+  verified: true
 elaine:
   name: Elaine
   email: elaine@example.com

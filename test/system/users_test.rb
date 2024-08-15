@@ -152,6 +152,23 @@ test "cannot change password with incorrect password challenge" do
 end
 
 
+test "Pagination should appear in my ads if listing above 20" do
+  log_in(users(:kramer))
+
+  visit my_listings_path
+  
+  assert_selector ".is-current", text: 1
+end
+
+
+test "Pagination should not appear if listing below 20" do
+  log_in(users(:jerry))
+
+  visit my_listings_path
+  
+  assert_no_selector ".is-current", text: 1
+end
+
 
 end
 
