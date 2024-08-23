@@ -13,8 +13,8 @@ class ListingsControllerTest < ActionDispatch::IntegrationTest
         post listings_path, params: {
           listing: {
               title: Faker::Commerce.product_name,
-              cover_photo: fixture_file_upload("test-image-1.jpg"),
               price: Faker::Commerce.price.floor,
+              cover_photo: fixture_file_upload("test-image-1.jpg"),
               condition: "mint",
               tags: ["test"],
               address_attributes: @address.attributes.except('id', 'created_at', 'updated_at')
