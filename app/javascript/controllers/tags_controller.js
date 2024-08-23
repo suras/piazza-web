@@ -8,12 +8,14 @@ export default class extends Controller {
   static targets = ["template", "container", "input"]
 
   addTag() {
-    var templateHtml = this.templateTarget.innerHTML
+    if(this.inputTarget.value.length > 0){
+      var templateHtml = this.templateTarget.innerHTML
 
-    templateHtml = templateHtml.replace(/{value}/g, this.inputTarget.value)
+      templateHtml = templateHtml.replace(/{value}/g, this.inputTarget.value)
 
-    this.inputTarget.value = ""
+      this.inputTarget.value = ""
 
-    this.containerTarget.insertAdjacentHTML("beforeend", templateHtml)
+      this.containerTarget.insertAdjacentHTML("beforeend", templateHtml)
+    }
   }
 }

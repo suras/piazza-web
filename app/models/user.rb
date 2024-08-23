@@ -1,6 +1,6 @@
 class User < ApplicationRecord
 
-  include Authentication, PasswordReset, Activation
+  include Authentication, PasswordReset, Activation, PermittedAttributes
 
   validates :name, presence: true, length: { maximum: 30 }
   validates :email, format: { with: URI::MailTo::EMAIL_REGEXP },
