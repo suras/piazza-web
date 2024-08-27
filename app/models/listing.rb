@@ -5,6 +5,8 @@ class Listing < ApplicationRecord
   include HasAddress, PermittedAttributes
 
   has_one_attached :cover_photo
+  has_rich_text :description
+
 
   enum condition: {
     mint: "mint", near_mint: "near_mint", used: "used", defective: "defective"
@@ -14,6 +16,8 @@ class Listing < ApplicationRecord
   validates :price, numericality: { only_integer: true }
   validates :tags, length: { in: 1..5 }
   validates :cover_photo, presence: true
+  validates :description, presence: true
+
 
   before_save :downcase_tags
 
