@@ -17,7 +17,8 @@ class ListingsControllerTest < ActionDispatch::IntegrationTest
               cover_photo: fixture_file_upload("test-image-1.jpg"),
               condition: "mint",
               tags: ["test"],
-              address_attributes: @address.attributes.except('id', 'created_at', 'updated_at')
+              address_attributes: @address.attributes.except('id', 'created_at', 'updated_at'),
+              description: "<p>Test</p>"
             }
           }  
        end
@@ -87,6 +88,22 @@ class ListingsControllerTest < ActionDispatch::IntegrationTest
      assert_response :unprocessable_entity
      assert_select "label[for='listing_tags'] ~ .is-danger", I18n.t("activerecord.errors.models.listing.attributes.tags.too_short")
     end
+
+    test "can't create  a listing without description" do
+      assert_no_difference "Listing.count" do
+        post listings_path, params: {
+          listing: {
+              title: Faker::Commerce.product_name,
+              price: 123,
+              condition: nil,
+              tags: nil,
+              address_attributes: @address.attributes.except('id', 'created_at', 'updated_at')
+            }
+          }  
+       end
+       assert_response :unprocessable_entity
+       assert_select ".is-danger", I18n.t("activerecord.errors.models.listing.attributes.description.blank")
+      end
 
     test "can delete a listing" do
        @listing = listings(:auto_listing_1_jerry)

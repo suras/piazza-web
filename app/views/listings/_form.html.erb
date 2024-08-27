@@ -43,10 +43,11 @@ label: t(".cover_photo") %>
         <form-field class="field">
           <%= form.label :description, class: "label" %>
           <%= form.rich_text_area :description %>
-          <%= tag.p class: "help is-danger" do %>
-          <%= form.object.errors
-          .messages_for(:description).to_sentence %>
-          <% end if form.object.errors.include?(:description) %>
+          <%# no need the below error rendering its already coming %>
+          <%# <%= tag.p class: "help is-danger" do %>
+          <%# <%= form.object.errors %>
+          <%# # .messages_for(:description).to_sentence %> 
+          <%# <% end if form.object.errors.include?(:description) %> 
        </form-field>
     </layout-column>
 </layout-columns>

@@ -2,3 +2,34 @@
 #   record: name_of_fixture (ClassOfFixture)
 #   name: content
 #   body: <p>In a <i>million</i> stars!</p>
+
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+<% 10.times do |n| %>
+auto_rich_text_<%= n %>_jerry:
+  record: auto_listing_<%= n %>_jerry (Listing)
+  name: description
+  body: <p><%= Faker::Lorem.paragraph(sentence_count: 5) %></p>
+<% end %>  
+
+<% 25.times do |n| %>
+auto_rich_text_<%= n %>_kramer:
+  record: auto_listing_<%= n %>_kramer (Listing)
+  name: description
+  body: <%= Faker::Lorem.paragraph(sentence_count: 5) %>
+<% end %>  
+
+<% 10.times do |n| %>
+auto_rich_text_<%= n %>_elaine:
+  record: auto_listing_<%= n %>_elaine (Listing)
+  name: description
+  body: <%= Faker::Lorem.paragraph(sentence_count: 5) %>
+<% end %>  
+
+<% 10.times do |n| %>
+auto_rich_text_<%= n %>_george:
+  record: auto_listing_<%= n %>_george (Listing)
+  name: description
+  body: <%= Faker::Lorem.paragraph(sentence_count: 5) %>
+<% end %> 
+

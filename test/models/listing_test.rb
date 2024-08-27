@@ -10,7 +10,7 @@ class ListingTest < ActiveSupport::TestCase
   end
   test "User should create a listing with valid params" do
     listing = Listing.new(title: "The world is one", price: 100, creator: @user, organization: @user.organizations.first, address: @address,
-    tags: ["Test"], cover_photo: @cover_photo_blob.signed_id)
+    tags: ["Test"], cover_photo: @cover_photo_blob.signed_id, description: "<p>Hellow</p>")
     assert listing.valid?
   end
 
@@ -34,7 +34,7 @@ class ListingTest < ActiveSupport::TestCase
   test "should not create listing without a valid address" do
     invalid_address = Address.new(city: nil, country: nil, line_1: nil, line_2: nil)
     listing = Listing.new(title: "The world is one", price: 100, creator: @user, organization: @user.organizations.first, address: invalid_address,
-    tags: ["Test"], cover_photo: @cover_photo_blob.signed_id)
+    tags: ["Test"], cover_photo: @cover_photo_blob.signed_id,  description: "<p>Hellow</p>")
     assert_not listing.valid?
 
 
