@@ -15,6 +15,10 @@
         <%= form.text_field :email, class: "input" %>
     </div>
     <div class = "block">
+        <%= form.label :profile_photo, class: "label" %>
+        <%= form.file_field :profile_photo, class: "file-input", accept: "image/*" %>
+    </div>
+    <div class = "block">
         <%= form.label :password, class: "label" %>
         <%= form.password_field :password, class: "input" %>
     </div>

@@ -14,6 +14,8 @@ class User < ApplicationRecord
 
   before_validation :strip_extraneous_spaces
 
+  has_one_attached :profile_photo
+
   
   private 
 

@@ -3,11 +3,11 @@ module User::PermittedAttributes
 
   class_methods do
     def permitted_attributes
-      [:name, :email, :password, :password_confirmation]
+      [:name, :email, :password, :password_confirmation, :profile_photo]
     end
 
     def update_attributes
-      [:name, :email]
+      [:name, :email, :profile_photo]
     end
   end
 

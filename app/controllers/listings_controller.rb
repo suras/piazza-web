@@ -3,12 +3,16 @@ class ListingsController < ApplicationController
   before_action :load_listing, except: [:new, :create]
   allow_unauthenticated only: :show
 
+  drop_breadcrumb -> { @listing.title },-> { listing_path(@listing) },except: [:new, :create]
+
   def new
+    drop_breadcrumb t("listings.breadcrumbs.new")
     @listing = Listing.new
     @listing.build_address
   end
 
   def create
+    drop_breadcrumb t("listings.breadcrumbs.new")
     @listing = Listing.new(listing_params.with_defaults(creator: Current.user, organization: Current.organization))
     if @listing.save
       redirect_to listing_path(@listing), flash: { success: t(".success")}, status: :see_other
@@ -22,9 +26,11 @@ class ListingsController < ApplicationController
   end
 
   def edit
+    drop_breadcrumb t("listings.breadcrumbs.edit")
   end
 
   def update
+    drop_breadcrumb t("listings.breadcrumbs.edit")
     if(@listing.update(listing_params))
       redirect_to listing_path(@listing), status: :see_other, flash: { success: t(".success") }
     else

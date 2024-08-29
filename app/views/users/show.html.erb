@@ -20,6 +20,10 @@
                 <%= form.label :email, class: "label" %>
                 <%= form.email_field :email, class: "input" %>
             </div>
+           <div class = "block">
+              <%= form.label :profile_photo, class: "label" %>
+              <%= form.file_field :profile_photo, class: "file-input", accept: "image/*" %>
+           </div>
             <%= form.submit t(".save_profile"),class: "button is-primary is-align-self-flex-end mb-3 mt-3" %>
             <%= render "application/flashes" if turbo_frame_request? %>
         <% end %>  
