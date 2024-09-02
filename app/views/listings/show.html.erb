@@ -64,6 +64,7 @@
                 </dl>
             </layout-column>
         </layout-columns>
+        <%= render "status", listing: @listing %>
         <%= render "tags", listing: @listing %>
         <div class="has-text-centered">
           <%= link_to url_for(@listing.cover_photo) do %>

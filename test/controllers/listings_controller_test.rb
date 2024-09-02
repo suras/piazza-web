@@ -23,6 +23,7 @@ class ListingsControllerTest < ActionDispatch::IntegrationTest
           }  
        end
        assert_redirected_to listing_path(Listing.last)
+       assert Listing.last.published?
    end
 
 
@@ -110,7 +111,16 @@ class ListingsControllerTest < ActionDispatch::IntegrationTest
        assert_difference "Listing.count", -1 do
          delete listing_path(@listing)
        end
-       assert_redirected_to my_listings_path
+      #  assert_redirected_to url_for(controller: :listings, action: :index)
+       assert_redirected_to my_listings_path(flash: { success: I18n.t("listings.destroy.success") }, status: :see_other)
+    end
+
+    test "updating a draft listing publishes it" do
+      @listing = listings(:auto_listing_1_jerry)
+      @listing.draft!
+      patch listing_path(@listing)
+      assert_redirected_to listing_path(@listing)
+      assert @listing.reload.published?
     end
 
 end

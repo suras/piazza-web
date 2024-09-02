@@ -1,0 +1,7 @@
+en:
+  listings:
+      drafts:
+         create:
+            success: Your ad has been saved as draft
+         update:
+            success: Your draft as has been updated    

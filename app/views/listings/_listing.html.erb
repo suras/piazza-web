@@ -17,6 +17,7 @@
             <%= listing.title %>
               </h1>
             <% end %>
+            <%= render "listings/status", listing: listing %>
             <%= render "listings/tags", listing: listing %>
               <dl class="block">
               <dd class="has-text-weight-semibold is-size-5 m-0">

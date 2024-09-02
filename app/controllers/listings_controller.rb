@@ -13,7 +13,9 @@ class ListingsController < ApplicationController
 
   def create
     drop_breadcrumb t("listings.breadcrumbs.new")
-    @listing = Listing.new(listing_params.with_defaults(creator: Current.user, organization: Current.organization))
+    @listing = Listing.new(listing_params.with_defaults(creator: Current.user, 
+        organization: Current.organization,
+        status: :published))
     if @listing.save
       redirect_to listing_path(@listing), flash: { success: t(".success")}, status: :see_other
     else
@@ -31,27 +33,39 @@ class ListingsController < ApplicationController
 
   def update
     drop_breadcrumb t("listings.breadcrumbs.edit")
-    if(@listing.update(listing_params))
-      redirect_to listing_path(@listing), status: :see_other, flash: { success: t(".success") }
+    @listing.assign_attributes(
+         listing_params.with_defaults(
+           status: :published
+         )
+      )
+    if @listing.save
+      flash[:success] = t(".success")
+      recede_or_redirect_to listing_path(@listing), status: :see_other
     else
-      render :edit, status: :unprocessable_content  
+      render :edit, status: :unprocessable_entity
     end
   end
 
   def destroy
     @listing.destroy 
     # flash[:success] = t(".success")
-    redirect_to my_listings_path ,status: :see_other, flash: { success: t(".success") }
+    redirect_to my_listings_path status: :see_other, flash: { success: t(".success") }
   end
 
   private 
 
-  def listing_params
-    params.require(:listing).permit(Listing.permitted_attributes)
-  end
+  # def listing_params
+  #   params.require(:listing).permit(Listing.permitted_attributes)
+  # end
 
   def load_listing
     @listing = Listing.find(params[:id])
+  end
+
+  def listing_params
+    params.fetch(:listing, {}).permit(
+      Listing.permitted_attributes
+    )
   end
 
 

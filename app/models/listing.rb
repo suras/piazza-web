@@ -12,6 +12,10 @@ class Listing < ApplicationRecord
     mint: "mint", near_mint: "near_mint", used: "used", defective: "defective"
   }
 
+  enum status: {
+    draft: "draft", published: "published", expired: "expired"
+  }
+
   validates :title, length: { in: 10..100 }
   validates :price, numericality: { only_integer: true }
   validates :tags, length: { in: 1..5 }
@@ -21,7 +25,7 @@ class Listing < ApplicationRecord
 
   before_save :downcase_tags
 
-  scope :feed, -> { order(created_at: :desc).includes(:address) }
+  scope :feed, -> { published.order(created_at: :desc).includes(:address) }
 
   private 
 

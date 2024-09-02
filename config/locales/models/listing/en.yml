@@ -7,6 +7,10 @@ en:
                       near_mint: As good as new
                       used: Used
                       defective: Defective
+              statuses:
+                   draft: draft
+                   published: published
+                   expired: expired     
       errors:
         models:
           listing:
