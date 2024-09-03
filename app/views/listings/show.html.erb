@@ -1,6 +1,9 @@
 <%= content_for(:title) do %>
   <%= @listing.title %>
 <% end %>
+
+<% turbo_refreshes_with method: :morph, scroll: :preserve %>
+
 <layout-columns class="columns is-centered">
     <layout-column class="column is-10">
         <div class="mb-3">
@@ -27,11 +30,7 @@
                     </dd>
                 </dl>
                 <layout-group class="buttons mt-6">
-                    <%= button_to "#",
-                    class: "button is-secondary is-medium" do %>
-                    <%= svg "heart", class: "icon is-small mr-3" %>
-                    <%= t(".save") %>
-                    <% end %>
+                    <%= render "listings/save_button", listing: @listing %>
                     <%= link_to "#", class: "button is-primary is-medium" do %>
                     <%= svg("message",class: "icon is-small mr-3", fill: "#fff") %>
                     <%= t(".contact") %>

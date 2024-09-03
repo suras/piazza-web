@@ -27,6 +27,12 @@ class Listing < ApplicationRecord
 
   scope :feed, -> { published.order(created_at: :desc).includes(:address) }
 
+  def saved?
+    return false unless Current.user.present?
+
+    Current.user.saved_listings.exists?(id: self.id)
+  end
+
   private 
 
     def downcase_tags

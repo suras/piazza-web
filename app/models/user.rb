@@ -16,7 +16,8 @@ class User < ApplicationRecord
 
   has_one_attached :profile_photo
 
-  
+  has_and_belongs_to_many :saved_listings, join_table: "saved_listings", class_name: "Listing"
+ 
   private 
 
   def strip_extraneous_spaces

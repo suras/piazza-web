@@ -15,7 +15,7 @@ class AuthenticateTest < ActionDispatch::IntegrationTest
    setup do
      @user =  users(:jerry) 
      draw_test_routes do
-        resource :authenticate_test, only: [:new, :create, :show, :edit]
+        resource :authenticate_test, only: [:new, :create, :show, :edit, :update]
      end
    end
 
@@ -63,6 +63,12 @@ class AuthenticateTest < ActionDispatch::IntegrationTest
      get authenticate_test_path
      assert_response :ok
      assert_equal "User: #{@user.id}", response.body
+   end
+
+   test "unauthenticated request is redirected to login page" do
+     put authenticate_test_path
+
+     assert_redirected_to login_path
    end
 
 

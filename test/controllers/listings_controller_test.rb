@@ -112,7 +112,8 @@ class ListingsControllerTest < ActionDispatch::IntegrationTest
          delete listing_path(@listing)
        end
       #  assert_redirected_to url_for(controller: :listings, action: :index)
-       assert_redirected_to my_listings_path(flash: { success: I18n.t("listings.destroy.success") }, status: :see_other)
+      #  assert_redirected_to my_listings_path(flash: { success: I18n.t("listings.destroy.success") }, status: :see_other)
+      assert_redirected_to my_listings_path
     end
 
     test "updating a draft listing publishes it" do

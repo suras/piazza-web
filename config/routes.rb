@@ -28,7 +28,11 @@ Rails.application.routes.draw do
       post :draft, to: "drafts#create", on: :collection
       patch :draft, to: "drafts#update"
     end
+    resource :saved_listings, only: [:create, :destroy], path: "save"
   end
+  
+  # only for cosmetic reeasons
+  resource :saved_listings, only: :show
 
   resource :my_listings, only: :show
 
@@ -39,3 +43,13 @@ Rails.application.routes.draw do
   end
 
 end
+
+# Draft Routes:
+
+#     POST /listings/draft -> Listings::DraftsController#create
+#     PATCH /listings/:id/draft -> Listings::DraftsController#update
+
+# Saved Listings Routes:
+
+#     POST /listings/:listing_id/save -> SavedListingsController#create
+#     DELETE /listings/:listing_id/save -> SavedListingsController#destroy
