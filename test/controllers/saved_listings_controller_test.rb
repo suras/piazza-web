@@ -19,4 +19,13 @@ class SavedListingsControllerTest < ActionDispatch::IntegrationTest
     # assert_response :ok
     assert_not @user.saved_listings.exists?(@listing.id)
   end
+
+  test "cannot save an ad created by onself" do
+    @listing = listings(:auto_listing_1_jerry)
+    post listing_saved_listings_path(@listing)
+    assert_response :forbidden
+    assert_not @user.saved_listings.exists?(@listing.id)
+  end
+
+
 end

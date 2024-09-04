@@ -1,6 +1,6 @@
 class Listings::DraftsController < ApplicationController
 
-  before_action :load_listing, only: :update
+  skip_authorization only: :create
 
   def create
     @listing = Listing.new(listing_params.with_defaults(
@@ -35,7 +35,7 @@ class Listings::DraftsController < ApplicationController
     params.require(:listing).permit(Listing.permitted_attributes)
   end
 
-  def load_listing
+  def authorizable_resource
     @listing = Listing.find(params[:listing_id])
   end
 end

@@ -2,7 +2,7 @@ class Listing < ApplicationRecord
   belongs_to :creator, class_name: "User"
   belongs_to :organization
 
-  include HasAddress, PermittedAttributes
+  include HasAddress, PermittedAttributes, AccessPolicy
 
   has_one_attached :cover_photo
   has_rich_text :description

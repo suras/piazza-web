@@ -158,4 +158,47 @@ class ListingsTest < ApplicationSystemTestCase
     assert_selector "label[for='listing_tags'] ~ p.is-danger"
   end
 
+  test "can create a draft listing" do
+    click_on I18n.t("application.navbar.create_ad")
+
+    fill_in Listing.human_attribute_name(:title),
+       with: "Coffee table book about coffee tables"
+    fill_in Listing.human_attribute_name(:price),
+       with: "99"
+    select Listing.human_enum_name(:condition, :used),
+      from: Listing.human_attribute_name(:condition)
+
+    find("[data-tags-target='input']")
+      .set("book")
+    click_on I18n.t("listings.tags_field.add_tag")
+
+    find("[data-tags-target='input']")
+    .set("hardcover")
+    click_on I18n.t("listings.tags_field.add_tag")
+    assert_selector "ui-tag", count: 2
+
+    fill_in Address.human_attribute_name(:line_1),
+    with: "123"
+    fill_in Address.human_attribute_name(:line_2),
+    with: "Fake Street"
+    fill_in Address.human_attribute_name(:city),
+    with: "London"
+    fill_in Address.human_attribute_name(:postcode),
+    with: "W1 1AB"
+
+    fill_in_rich_text_area Listing.human_attribute_name(:description),
+    with:
+    "This is a story that must be told -
+    A history of coffee tables, celebrities,
+    and their coffee tables..."
+    
+    find("[data-image-upload-target='fileInput']", visible: false)
+    .attach_file(file_fixture("test-image-1.jpg"))
+    click_on I18n.t("listings.new.save_as_draft")
+
+    assert_selector ".notification", text: I18n.t("listings.drafts.create.success")
+    assert Listing.last.draft?
+    assert_current_path listing_path(Listing.last)
+  end
+
 end

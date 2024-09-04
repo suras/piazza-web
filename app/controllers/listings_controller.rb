@@ -1,7 +1,8 @@
 class ListingsController < ApplicationController
 
-  before_action :load_listing, except: [:new, :create]
+  # before_action :load_listing, except: [:new, :create]
   allow_unauthenticated only: :show
+  skip_authorization only: [:new, :create]
 
   drop_breadcrumb -> { @listing.title },-> { listing_path(@listing) },except: [:new, :create]
 
@@ -58,7 +59,7 @@ class ListingsController < ApplicationController
   #   params.require(:listing).permit(Listing.permitted_attributes)
   # end
 
-  def load_listing
+  def authorizable_resource
     @listing = Listing.find(params[:id])
   end
 

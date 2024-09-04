@@ -1,5 +1,6 @@
 class SavedListingsController < ApplicationController
   before_action :load_listing, except: :show
+  before_action -> { authorize! @listing.can_save? }, except: :show
 
   def create
     Current.user.saved_listings << @listing
@@ -10,7 +11,7 @@ class SavedListingsController < ApplicationController
   def destroy
     Current.user.saved_listings.destroy(@listing)
 
-    redirect_to @listing, status: :see_other
+    redirect_to request.referer || @listing, status: :see_other
   end
 
   def show

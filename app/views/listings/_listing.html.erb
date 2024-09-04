@@ -1,7 +1,11 @@
 <%# locals: (listing:) -%>
 
+<% turbo_refreshes_with method: :morph, scroll: :preserve %>
+
+
 <div class="card">
   <div class="card-image">
+    <%= save_button(listing) %>
     <%= link_to listing_path(listing) do %>
     <figure class="image is-4by3">
       <% if listing.cover_photo.present? %>
@@ -32,6 +36,7 @@
             ) %>
             <span>
               <%= listing.address.redacted %>
+              <%= render "listings/save_button", listing: listing %>
                 </span>
               </span>
              </dd>

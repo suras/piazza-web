@@ -8,9 +8,11 @@
     <layout-column class="column is-10">
         <div class="mb-3">
             <h1 class="title is-inline">
-               <%= @listing.title %>
+               <%= @listing.title %>    <%= save_button(@listing) %>
             </h1>
-            <%= link_to t(".edit"), edit_listing_path(@listing) %>
+            <% if @listing.edit? %>
+              <%= link_to t(".edit"), edit_listing_path(@listing) %>
+            <% end %>
         </div>
         <layout-columns class="columns is-centered">
             <layout-column class="box column is-half mt-6 p-5 m-4">
@@ -30,7 +32,7 @@
                     </dd>
                 </dl>
                 <layout-group class="buttons mt-6">
-                    <%= render "listings/save_button", listing: @listing %>
+                    <%= render "listings/save_button", listing: @listing if @listing.can_save? %>
                     <%= link_to "#", class: "button is-primary is-medium" do %>
                     <%= svg("message",class: "icon is-small mr-3", fill: "#fff") %>
                     <%= t(".contact") %>
