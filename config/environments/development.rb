@@ -82,4 +82,6 @@ Rails.application.configure do
    config.outbound_email_domain = "example.com"  
 
    config.consider_all_requests_local = true
+
+   config.active_job.queue_adapter = :sidekiq
 end

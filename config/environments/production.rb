@@ -102,4 +102,6 @@ Rails.application.configure do
       password:Rails.application.credentials.sendgrid_api_key,
       authentication: :login
   }
+
+  config.active_job.queue_adapter = :sidekiq
 end

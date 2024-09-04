@@ -1,3 +1,5 @@
+require "sidekiq/web"
+
 Rails.application.routes.draw do
   get 'feed/show'
   get 'users/new'
@@ -41,6 +43,8 @@ Rails.application.routes.draw do
     resources :password_resets, only: [:new, :create, :update, :edit]
     resources :activation, only: [:show]
   end
+
+  mount Sidekiq::Web => '/sidekiq'
 
 end
 

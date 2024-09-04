@@ -72,7 +72,11 @@ group :development do
   gem "i18n-debug"
 
   gem "letter_opener", "~> 1.8"
+
+  gem "dotenv-rails", "~> 2.8"
 end
+
+gem "sidekiq", "~> 7.2"
 
 group :test do
   # Use system testing [https://guides.rubyonrails.org/testing.html#system-testing]
