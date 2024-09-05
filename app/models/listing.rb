@@ -2,7 +2,7 @@ class Listing < ApplicationRecord
   belongs_to :creator, class_name: "User"
   belongs_to :organization
 
-  include HasAddress, PermittedAttributes, AccessPolicy
+  include HasAddress, PermittedAttributes, AccessPolicy, Publishable, Expireable
 
   has_one_attached :cover_photo
   has_rich_text :description
@@ -31,6 +31,10 @@ class Listing < ApplicationRecord
     return false unless Current.user.present?
 
     Current.user.saved_listings.exists?(id: self.id)
+  end
+
+  def expiry_date
+    published_on.end_of_day + 30.days
   end
 
   private 

@@ -8,6 +8,7 @@ auto_listing_<%= n %>_jerry:
   price: <%= Faker::Commerce.price.floor %>
   condition: mint
   tags: [test, rock, planet, plate]
+  published_on: <%= Time.zone.now %>
 <% end %>  
 
 <% 25.times do |n| %>
@@ -18,6 +19,7 @@ auto_listing_<%= n %>_kramer:
   price: <%= Faker::Commerce.price.floor %>
   condition: near_mint
   tags: [test]
+  published_on: <%= Time.zone.now %>
 <% end %>  
 
 <% 10.times do |n| %>
@@ -28,6 +30,7 @@ auto_listing_<%= n %>_elaine:
   price: <%= Faker::Commerce.price.floor %>
   condition: mint
   tags: [test]
+  published_on: <%= Time.zone.now %>
 <% end %>  
 
 <% 10.times do |n| %>
@@ -38,5 +41,6 @@ auto_listing_<%= n %>_george:
   price: <%= Faker::Commerce.price.floor %>
   condition: near_mint
   tags: [test]
+  published_on: <%= Time.zone.now %>
 <% end %> 
 
