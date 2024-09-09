@@ -6,6 +6,7 @@
 #  condition       :enum
 #  price           :integer
 #  published_on    :datetime
+#  searchable      :tsvector
 #  status          :enum             default("published")
 #  tags            :string           is an Array
 #  title           :string
@@ -18,6 +19,7 @@
 #
 #  index_listings_on_creator_id       (creator_id)
 #  index_listings_on_organization_id  (organization_id)
+#  index_listings_on_searchable       (searchable) USING gin
 #
 # Foreign Keys
 #
@@ -28,7 +30,8 @@ class Listing < ApplicationRecord
   belongs_to :creator, class_name: "User"
   belongs_to :organization
 
-  include HasAddress, PermittedAttributes, AccessPolicy, Publishable, Expireable, Renewable
+  include HasAddress, PermittedAttributes, AccessPolicy, Publishable, 
+          Expireable, Renewable, Searchable
 
   has_one_attached :cover_photo
   has_rich_text :description

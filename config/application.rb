@@ -26,5 +26,6 @@ module Piazza
     config.exceptions_app = ->(env) {
       ErrorsController.action(:show).call(env)
     }
+    config.action_view.prefix_partial_path_with_controller_namespace = false
   end
 end

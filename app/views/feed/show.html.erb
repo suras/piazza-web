@@ -1,6 +1,7 @@
 <%= content_for(:title) do %>
   <%= t(".title") %>
 <% end %>
+<%= render "feed/search" %>
 <div class="container mt-3">
     <h1 class="title">
         <% if logged_in? %>
@@ -10,7 +11,7 @@
         <% end %>
     </h1>
     <layout-columns class="columns is-centered is-multiline">
-      <%= render partial: @listings, layout: "listing_layout" %>
+      <%= render partial: @listings, layout: "feed/listing_layout" %>
     </layout-columns>
 </div>
 <div class="container m-5 mt-6">
