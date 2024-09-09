@@ -1,3 +1,29 @@
+# == Schema Information
+#
+# Table name: listings
+#
+#  id              :bigint           not null, primary key
+#  condition       :enum
+#  price           :integer
+#  published_on    :datetime
+#  status          :enum             default("published")
+#  tags            :string           is an Array
+#  title           :string
+#  created_at      :datetime         not null
+#  updated_at      :datetime         not null
+#  creator_id      :bigint
+#  organization_id :bigint           not null
+#
+# Indexes
+#
+#  index_listings_on_creator_id       (creator_id)
+#  index_listings_on_organization_id  (organization_id)
+#
+# Foreign Keys
+#
+#  fk_rails_...  (creator_id => users.id)
+#  fk_rails_...  (organization_id => organizations.id)
+#
 class Listing < ApplicationRecord
   belongs_to :creator, class_name: "User"
   belongs_to :organization
