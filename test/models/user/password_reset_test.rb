@@ -12,7 +12,9 @@ class User::PasswordResetTest < ActiveSupport::TestCase
 
      @user.reset_password
 
-     assert_emails 1
+    #  assert_emails 1
+     assert_enqueued_emails 1
+
      assert_empty @user.app_sessions
   end
 

@@ -34,5 +34,7 @@ en:
      save_button:
        save: Save this ad
        unsave: Unsave 
+     renew:
+        invalid_link: Invalid renew link  
        
             

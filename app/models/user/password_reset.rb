@@ -24,7 +24,7 @@ module User::PasswordReset
     
     UserMailer.with(user: self)
               .password_reset(token)
-              .deliver_now
+              .deliver_later
   end
 
 end

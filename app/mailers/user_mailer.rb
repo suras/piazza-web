@@ -15,4 +15,10 @@ class UserMailer < ApplicationMailer
 
     mail subject: t(".subject")
   end
+
+  def renew(token, listing_id)
+     @login_token = token
+     @listing_id = listing_id
+     mail subject: t(".subject")
+  end
 end

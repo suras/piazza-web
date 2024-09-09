@@ -18,4 +18,5 @@ class UserMailerTest < ActionMailer::TestCase
         assert_select "a.button"
       end              
   end
+
 end

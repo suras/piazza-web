@@ -68,4 +68,8 @@ Rails.application.configure do
   }
 
   config.outbound_email_domain = "test.com"
+
+  # config.active_job.queue_adapter = :test
+
+  # config.action_mailer.delivery_method = :test
 end

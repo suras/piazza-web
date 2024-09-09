@@ -1,0 +1,8 @@
+<h1><%= t(".heading") %></h1>
+<p>
+  <%= t(".body") %>
+</p>
+<br>
+<div class="center">
+  <%= link_to t(".button"), renew_listing_url(@listing_id, token: @login_token), class: "button" %>
+</div>

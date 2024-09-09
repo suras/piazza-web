@@ -17,6 +17,11 @@ class User < ApplicationRecord
   has_one_attached :profile_photo
 
   has_and_belongs_to_many :saved_listings, join_table: "saved_listings", class_name: "Listing"
+
+    # uses record id to generate signed string
+  generates_token_for :authenticate, expires_in: 24.hours do
+    password_salt.last(10)   #appends to the generated token. this is like jwt token 
+  end
  
   private 
 

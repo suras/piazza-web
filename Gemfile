@@ -74,6 +74,8 @@ group :development do
   gem "letter_opener", "~> 1.8"
 
   gem "dotenv-rails", "~> 2.8"
+
+    gem 'annotate'
 end
 
 gem "sidekiq", "~> 7.2"

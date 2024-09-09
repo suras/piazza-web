@@ -30,6 +30,9 @@ Rails.application.routes.draw do
     scope module: :listings do
       post :draft, to: "drafts#create", on: :collection
       patch :draft, to: "drafts#update"
+      member do # both asr similar using member is expicit
+        get :renew, to: "renew#show"
+      end
     end
     resource :saved_listings, only: [:create, :destroy], path: "save"
   end

@@ -11,10 +11,16 @@ class Users::PasswordResetsControllerTest < ActionDispatch::IntegrationTest
    post users_password_resets_path, params: {
       email: @user.email
    } 
-   
+
+  #  assert_difference 'ActionMailer::Base.deliveries.size', 1 do
+  #   post users_password_resets_path, params: { email: @user.email }
+  #   perform_enqueued_jobs
+  # end
+  #  perform_enqueued_jobs
+   assert_enqueued_emails 1
    assert_response :ok 
    assert_select "p", text: I18n.t("users.password_resets.create.message")
-   assert_emails 1
+  #  assert_emails 1  for deliver_now instead of deliver later
  end 
 
 

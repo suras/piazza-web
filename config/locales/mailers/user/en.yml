@@ -14,3 +14,9 @@ en:
       body: >
         Acitvate Your Piazza Account
       button: Activate 
+    renew:
+      subject: Renew your ad
+      heading: Your ad is about to expire. Please Renew
+      body: >
+           Renew your ad
+      button: renew       

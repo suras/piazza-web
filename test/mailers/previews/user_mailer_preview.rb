@@ -6,4 +6,9 @@ class UserMailerPreview < ActionMailer::Preview
     UserMailer.with(user: user).password_reset("preview_token")
   end
 
+  def renew
+    user = User.first
+    UserMailer.with(user: user).renew("listing_id", "preview_token")
+  end
+
 end
