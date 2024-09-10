@@ -25,6 +25,11 @@ module Listing::Searchable
     .where(where)
     .order("rank DESC")
     }
+
+
+    scope :near, ->(location) {
+      select(Arel.star).joins(:address).merge(Address.near(location))
+    }
     end
 
 

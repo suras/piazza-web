@@ -104,6 +104,7 @@ GEM
       addressable
     cssbundling-rails (1.4.0)
       railties (>= 6.0.0)
+    csv (3.3.0)
     date (3.3.4)
     debug (1.9.2)
       irb (~> 1.10)
@@ -127,6 +128,9 @@ GEM
     fugit (1.11.1)
       et-orbi (~> 1, >= 1.2.11)
       raabro (~> 1.4)
+    geocoder (1.8.3)
+      base64 (>= 0.1.0)
+      csv (>= 3.0.0)
     globalid (1.2.1)
       activesupport (>= 6.1)
     htmlentities (4.3.4)
@@ -322,6 +326,7 @@ DEPENDENCIES
   debug
   dotenv-rails (~> 2.8)
   faker (~> 2.21)
+  geocoder (~> 1.8)
   i18n-debug
   image_processing (~> 1.2)
   iso_country_codes (~> 0.7.8)

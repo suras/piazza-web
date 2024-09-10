@@ -82,6 +82,8 @@ gem "sidekiq", "~> 7.2"
 
 gem "sidekiq-cron", "~> 1.11"
 
+gem "geocoder", "~> 1.8"
+
 group :test do
   # Use system testing [https://guides.rubyonrails.org/testing.html#system-testing]
   gem "capybara"

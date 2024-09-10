@@ -1,4 +1,6 @@
-<%= form_with(url: search_path, scope: :listings_search, method: :get, class: "block box"
+<%# locals: (search:) -%>
+
+<%= form_with(model: search, url: search_path, scope: :listings_search, method: :get, class: "block box"
 ) do |f| %>
     <layout-columns class="columns is-centered">
     <layout-column class="column is-three-quarters">
@@ -8,6 +10,13 @@
     class: "input",
     required: true %>
     </form-field>
+    </layout-column>
+    <layout-column class="column">
+        <form-field class="field">
+        <%= f.text_field :location,
+        placeholder: t(".location_placeholder"),
+        class: "input" %>
+        </form-field>
     </layout-column>
     </layout-columns>
     <layout-group class="buttons is-right">

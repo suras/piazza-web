@@ -6,8 +6,10 @@
 #  addressable_type :string
 #  city             :string
 #  country          :string
+#  latitude         :decimal(, )
 #  line_1           :string
 #  line_2           :string
+#  longitude        :decimal(, )
 #  postcode         :string
 #  created_at       :datetime         not null
 #  updated_at       :datetime         not null
@@ -15,7 +17,8 @@
 #
 # Indexes
 #
-#  index_addresses_on_addressable  (addressable_type,addressable_id)
+#  index_addresses_on_addressable             (addressable_type,addressable_id)
+#  index_addresses_on_latitude_and_longitude  (latitude,longitude)
 #
 
 # This model initially had no columns defined. If you add columns to the
@@ -30,6 +33,8 @@ address_<%= n %>_jerry:
   city: <%= Faker::Address.city %>
   country: GB
   postcode: <%= Faker::Address.postcode %>
+  latitude: 51.44581075
+  longitude: -0.21145055411144628
 <% end %>  
 
 <% 25.times do |n| %>
@@ -40,5 +45,7 @@ address_<%= n %>_kramer:
   city: <%= Faker::Address.city %>
   country: GB
   postcode: <%= Faker::Address.postcode %>
+  latitude: 52.4559648
+  longitude: -1.9038627
 <% end %> 
 
