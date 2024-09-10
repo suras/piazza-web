@@ -30,6 +30,10 @@ module Listing::Searchable
     scope :near, ->(location) {
       select(Arel.star).joins(:address).merge(Address.near(location))
     }
+
+    scope :filter_by_tags, ->(tags) {
+      where("tags @> ARRAY[?]::varchar[]", tags)
+    }
     end
 
 

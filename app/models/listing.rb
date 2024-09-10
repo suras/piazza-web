@@ -20,6 +20,7 @@
 #  index_listings_on_creator_id       (creator_id)
 #  index_listings_on_organization_id  (organization_id)
 #  index_listings_on_searchable       (searchable) USING gin
+#  index_listings_on_tags             (tags) USING gin
 #
 # Foreign Keys
 #

@@ -50,6 +50,10 @@ Rails.application.routes.draw do
 
   resource :search, only: :show, controller: "feed/searches"
 
+  resource :search, only: :show, controller: "feed/searches" do
+    get "tags/:tag", to: "feed/searches/tags#show", as: "tags"
+  end
+
   mount Sidekiq::Web => '/sidekiq'
 
 end
