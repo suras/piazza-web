@@ -7,4 +7,5 @@ en:
      search:
         query_placeholder: What are you looking for?
         location_placeholder: Enter a location
-        search: Search for ads     
+        search: Search for ads 
+        tags_placeholder: Enter tags    

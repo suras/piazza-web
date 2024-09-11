@@ -18,6 +18,15 @@
         class: "input" %>
         </form-field>
     </layout-column>
+       <layout-column class="column">
+        <form-field class="field">
+        <%= f.text_field :tags,
+        placeholder: t(".tags_placeholder"),
+        class: "input",
+        multiple: true,
+        value: search.tags&.join(', ') %>
+      </form-field>
+    </layout-column>
     </layout-columns>
     <layout-group class="buttons is-right">
     <%= f.submit t(".search"),

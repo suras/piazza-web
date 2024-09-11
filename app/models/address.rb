@@ -23,7 +23,7 @@
 class Address < ApplicationRecord
   belongs_to :addressable, polymorphic: true
 
-  include PermittedAttributes
+  include PermittedAttributes, Geocodable
 
   validates :line_1, presence:true
   validates :line_2, presence:true
@@ -33,8 +33,7 @@ class Address < ApplicationRecord
 
   attribute :country, default: "GB"
 
-  geocoded_by :redacted
-  after_validation :geocode
+  # after_validation :geocode
 
   def redacted
     "#{city}, #{postcode}"
