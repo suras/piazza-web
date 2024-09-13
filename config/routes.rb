@@ -33,6 +33,7 @@ Rails.application.routes.draw do
       member do # both asr similar using member is expicit
         get :renew, to: "renew#show"
       end
+      resource :contact, only: [:show], controller: "contact"
     end
     resource :saved_listings, only: [:create, :destroy], path: "save"
   end
@@ -52,6 +53,11 @@ Rails.application.routes.draw do
 
   resource :search, only: :show, controller: "feed/searches" do
     get "tags/:tag", to: "feed/searches/tags#show", as: "tags"
+  end
+
+
+  resources :conversations, only: [] do
+    resources :messages, only: [:create]
   end
 
   mount Sidekiq::Web => '/sidekiq'

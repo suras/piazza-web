@@ -14,9 +14,9 @@
     <%=  render "application/navbar" %>
     <%=  render "application/flashes"%>
     <%= render "application/breadcrumbs" if breadcrumbs.show? %>
-
     <main>
       <%= yield %>
-    </main>  
+    </main> 
+    <%= turbo_frame_tag :modal %>
   </body>
 </html>

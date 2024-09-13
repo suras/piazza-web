@@ -20,5 +20,8 @@ module Listing::AccessPolicy
     organization != Current.organization
   end
 
+  def can_contact?
+    organization != Current.organization
+  end
 
 end

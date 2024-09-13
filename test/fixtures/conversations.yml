@@ -1,0 +1,42 @@
+# == Schema Information
+#
+# Table name: conversations
+#
+#  id         :bigint           not null, primary key
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
+#  buyer_id   :bigint
+#  listing_id :bigint
+#  seller_id  :bigint
+#
+# Indexes
+#
+#  index_conversations_on_buyer_id                               (buyer_id)
+#  index_conversations_on_listing_id                             (listing_id)
+#  index_conversations_on_seller_id                              (seller_id)
+#  index_conversations_on_seller_id_and_buyer_id_and_listing_id  (seller_id,buyer_id,listing_id) UNIQUE
+#
+# Foreign Keys
+#
+#  fk_rails_...  (buyer_id => organizations.id)
+#  fk_rails_...  (listing_id => listings.id) ON DELETE => cascade
+#  fk_rails_...  (seller_id => organizations.id)
+#
+
+# This model initially had no columns defined. If you add columns to the
+# model remove the "{}" from the fixture names and add the columns immediately
+# below each fixture, per the syntax in the comments below
+#
+
+kramer_jerry_1:
+  buyer: kramer
+  seller: jerry
+  listing: auto_listing_1_jerry
+jerry_elaine_1:
+  buyer: jerry
+  seller: elaine
+  listing: auto_listing_1_elaine
+elaine_george_1:
+  buyer: elaine
+  seller: george
+  listing: auto_listing_1_george

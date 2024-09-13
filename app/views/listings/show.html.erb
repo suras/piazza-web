@@ -34,10 +34,11 @@
                 </dl>
                 <layout-group class="buttons mt-6">
                     <%= render "listings/save_button", listing: @listing if @listing.can_save? %>
-                    <%= link_to "#", class: "button is-primary is-medium" do %>
+                    <%= link_to listing_contact_path(@listing),
+                       class: "button is-primary is-medium", data: { turbo_frame: :modal } do %>
                     <%= svg("message",class: "icon is-small mr-3", fill: "#fff") %>
                     <%= t(".contact") %>
-                    <% end %>
+                    <% end if @listing.can_contact?%>
                 </layout-group>
             </layout-column>
             <layout-column class="box column is-half mt-6 p-5 m-4">

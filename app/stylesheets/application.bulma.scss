@@ -4,3 +4,11 @@
 figure.image img {
     object-fit: cover !important;
 }
+
+messages-container {
+    display: block;
+    overflow-y: scroll;
+}
+.modal messages-container {
+    max-height: 40vh;
+}
