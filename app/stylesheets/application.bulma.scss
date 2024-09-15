@@ -12,3 +12,19 @@ messages-container {
 .modal messages-container {
     max-height: 40vh;
 }
+
+turbo-frame#conversation {
+    form {
+    height: 8em;
+    textarea {
+    min-height: 4em !important;
+}
+}
+messages-container {
+height: calc(#{$content-space} - 12em);
+}
+}
+
+#conversations .is-active {
+    border: 2px solid #DE911D;
+}

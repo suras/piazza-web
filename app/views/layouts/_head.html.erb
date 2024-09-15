@@ -7,4 +7,5 @@
 %>
 <%= javascript_include_tag "application", "data-turbo-track":
 "reload", defer: true%>
+<%= stylesheet_link_tag "mobile", "data-turbo-track": "reload" if request.variant.mobile? %>
 <%= content_for :head %>
