@@ -6,9 +6,14 @@ export default class extends Controller {
   }
 
   static targets = ["message"]
+  static values = { recipient: String }
+  static classes = ["sender"]
 
   messageTargetConnected(target) {
     this.scrollToBottom()
+    if (target.dataset.from == this.recipientValue) {
+      target.classList.add(...this.senderClasses)
+    }
   }
 
   // When a target becomes connected, Stimulus calls its

@@ -1,5 +1,6 @@
 development:
-  adapter: async
+  adapter: redis
+  channel_prefix: piazza_production
 
 test:
   adapter: test

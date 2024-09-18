@@ -88,7 +88,7 @@ gem "local_time", "~> 2.1"
 
 gem "browser", "~> 5.3"
 
-
+gem 'redis', '~> 4.0'
 
 group :test do
   # Use system testing [https://guides.rubyonrails.org/testing.html#system-testing]
