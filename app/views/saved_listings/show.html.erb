@@ -1,7 +1,7 @@
 <%= content_for(:title) do %>
 <%= t(".title") %>
 <% end %>
-<div class="container mt-3">
+<div class="container mt-3" id = "">
     <layout-columns class="columns is-centered is-multiline">
     <%= render partial: @listings, layout: "feed/listing_layout" %>
     </layout-columns>

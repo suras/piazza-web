@@ -6,3 +6,5 @@ en:
               no_selected_conversation: No selected conversation
             show:
                send: Send
+            form:
+               send: Send   

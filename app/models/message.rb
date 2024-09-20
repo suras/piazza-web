@@ -37,6 +37,10 @@ class Message < ApplicationRecord
     .order(created_at: :asc)
   }
 
+  scope :last_10, -> {
+    last(10)
+  }
+
   after_create_commit -> {
     broadcast_append_later_to(
       conversation, 

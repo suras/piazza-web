@@ -2,9 +2,7 @@
 <%= link_to conversation_path(conversation),
 class: "m-2",
 data: { turbo_frame: :conversation } do %>
-<%= tag.div \
-class: class_names(
-"box",
+<%= tag.div class: class_names("box",
 { "has-background-info-dark has-text-white":
 conversation.seller == Current.organization }
 ),

@@ -1,10 +1,18 @@
-<%# locals: (conversation:) -%>
+<%# locals: (conversation:, messages:, pagy:) -%>
 <%= tag.messages_container id: dom_id(conversation, :messages),  class: "p-4",
   data: {
     controller: "messages",
     messages_recipient_value: Current.organization.id,
     messages_sender_class: "has-background-primary-dark has-text-white"
   } do %>
-  <%= render conversation.messages.for_display %>
-  <%= turbo_stream_from conversation,channel: "ConversationsChannel" %>
+  <% page = params[:page].present? ? params[:page].to_i : pagy.last %>
+ <h1> <%= page %> </h2>
+<%= turbo_frame_tag "message_page_#{page}", target: "_top" do %>
+  <%= turbo_frame_tag("message_page_#{page - 1}",target: "_top",
+   src: conversation_messages_path(conversation, page: (page - 1)),loading: :lazy,
+) do %>
+<% end  if page > 1 %>  
+  <%= render messages %>
+<% end %>  
+  <%= turbo_stream_from conversation, channel: "ConversationsChannel" %>
 <% end %>

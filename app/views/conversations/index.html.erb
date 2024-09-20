@@ -5,8 +5,7 @@
 <layout-column
 id="conversations"
 class="column is-one-quarter p-4">
-<%= render(@conversations) \
-|| tag.h2(class: "has-text-centered is-size-3") do %>
+<%= render(@conversations) || tag.h2(class: "has-text-centered is-size-3") do %>
 <%= t(".no_conversations") %>
 <% end %>
 </layout-column>

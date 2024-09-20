@@ -57,7 +57,7 @@ Rails.application.routes.draw do
 
 
   resources :conversations, only: [:index, :show] do
-    resources :messages, only: [:create]
+    resources :messages, only: [:create, :index]
   end
 
   mount Sidekiq::Web => '/sidekiq'

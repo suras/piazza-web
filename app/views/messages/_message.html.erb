@@ -1,9 +1,6 @@
 <%# locals: (from: nil, message:, request_id: nil) -%>
-<%= tag.div \
-class: class_names(
-"box",
-{ "has-background-primary-dark has-text-white":
-message.from == Current.organization }
+<%= tag.div class: class_names("box",
+{ "has-background-primary-dark has-text-white": message.from == Current.organization }
 ), data: {
     messages_target: "message",
     from: from

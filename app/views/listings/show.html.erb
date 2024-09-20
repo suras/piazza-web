@@ -4,7 +4,8 @@
 
 <% turbo_refreshes_with method: :morph, scroll: :preserve %>
 
-
+<%= turbo_stream_from Current.user, channel: "SaveListingsChannel" %>
+<div id="listing_<%= @listing.id %>">
 <layout-columns class="columns is-centered">
     <layout-column class="column is-10">
         <div class="mb-3">

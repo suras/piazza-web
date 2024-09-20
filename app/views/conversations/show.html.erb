@@ -2,21 +2,13 @@
 <%= @conversation.listing.title %>
 <% end %>
 <%= turbo_frame_tag :conversation do %>
-<div class="p-3">
+<div class="p-3">  
+    <h1>vvvvvvvvvvvvvvvvvv<%= @pagy.last %></h1>
+
 <%= render "messages/messages",
-conversation: @conversation %>
+conversation: @conversation, messages: @conversation.messages.for_display.last_10,
+pagy: @pagy %>
 </div>
-<%= form_with(
-model: @message,
-url: conversation_messages_path(@conversation),
-class: "p-4"
-) do |f| %>
-<form-field class="field">
-<%= f.text_area :body, class: "textarea has-fixed-size" %>
-</form-field>
-<layout-group class="buttons is-right mt-4">
-<%= f.submit t(".send"), class: "button is-primary" %>
-</layout-group>
-<% end %>
+<%= render "form", message: @message, conversation: @conversation %> 
 <%= turbo_stream.switch_class(dom_id(@conversation), "is-active") %>
 <% end %>

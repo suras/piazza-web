@@ -4,7 +4,7 @@ class SavedListingsController < ApplicationController
 
   def create
     Current.user.saved_listings << @listing
-
+    Turbo::StreamsChannel.broadcast_refresh_to Current.user
     redirect_to @listing, status: :see_other
   end
 

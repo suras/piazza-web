@@ -3,12 +3,12 @@ class ConversationsController < ApplicationController
   skip_authorization only: :index
   def index
     @conversations = Conversation.current_organization.for_display
-    
   end
 
 
-  def show  
+  def show 
     @message = @conversation.messages.build
+    @pagy, @messages = pagy(@conversation.messages, items: 5) 
   end
   
   private

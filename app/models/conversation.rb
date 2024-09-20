@@ -45,6 +45,7 @@ class Conversation < ApplicationRecord
     .distinct
   }
 
+
   private
   
   def set_seller
