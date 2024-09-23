@@ -1,0 +1,8 @@
+en:
+  conversation_mailer:
+    new_message:
+      subject: "New message regarding: %{title}"
+      heading: "You've got a new message regarding: %{title}"
+      instructions: "You can reply to this email to respond or view
+      the message in Piazza"
+      button: View in Piazza

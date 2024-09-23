@@ -7,6 +7,8 @@ class Listings::ContactController < ApplicationController
       buyer: Current.organization
       )
     @message = @conversation.messages.build  
+    @pagy, @messages = pagy(@conversation.messages, items: 5) 
+
 
     # @conversation.messages.build is designed specifically for associations and automatically handles the association between the new message and @conversation. 
     # It adds the new message to the messages collection of @conversation.

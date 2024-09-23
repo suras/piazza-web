@@ -18,11 +18,11 @@ class MessagesControllerTest < ActionDispatch::IntegrationTest
       accept: "text/vnd.turbo-stream.html"
         }
       end
-  #  assert_response :ok
+   assert_response :ok
   #  assert_equal "text/vnd.turbo-stream.html", @response.media_type
   #  assert_match message_body, @response.body
   #  no need after action cable integration
-    assert_response :no_content
+    # assert_response :no_content
   end
 
   test "cannot send message to unauthorized conversation" do

@@ -1,0 +1,11 @@
+<h1><%= t(".heading", title: @listing.title) %></h1>
+<p>
+<%= @message.body %>
+</p>
+<p>
+<em><%= t(".instructions") %></em>
+</p>
+<br>
+<div class="center">
+<%= link_to t(".button"),conversations_url,class: "button" %>
+</div>

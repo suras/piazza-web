@@ -1,0 +1,31 @@
+# == Schema Information
+#
+# Table name: conversations_notifications
+#
+#  id           :bigint           not null, primary key
+#  created_at   :datetime         not null
+#  updated_at   :datetime         not null
+#  message_id   :bigint
+#  recipient_id :bigint
+#
+# Indexes
+#
+#  index_conversations_notifications_on_message_id    (message_id)
+#  index_conversations_notifications_on_recipient_id  (recipient_id)
+#
+# Foreign Keys
+#
+#  fk_rails_...  (message_id => messages.id) ON DELETE => cascade
+#  fk_rails_...  (recipient_id => organizations.id) ON DELETE => cascade
+#
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+# This model initially had no columns defined. If you add columns to the
+# model remove the "{}" from the fixture names and add the columns immediately
+# below each fixture, per the syntax in the comments below
+#
+one: {}
+# column: value
+#
+two: {}
+# column: value

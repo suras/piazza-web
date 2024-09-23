@@ -49,5 +49,9 @@ class Message < ApplicationRecord
     )
   }
 
+  after_create_commit -> {
+     conversation.notify_recipient(self)
+  }
+
   
 end

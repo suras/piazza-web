@@ -22,7 +22,8 @@
     data: { action: "modal#close" } %>
 </header>
 <section class="modal-card-body">
-<%= render "messages/messages", conversation: @conversation %>
+<%= render "messages/messages", conversation: @conversation, messages: @conversation.messages.for_display.last_10,
+pagy: @pagy%>
 <form-field class="field">
 <%= form.text_area :body,required: true, class: "textarea has-fixed-size" %>
 </form-field>

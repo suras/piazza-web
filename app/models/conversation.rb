@@ -24,7 +24,7 @@
 #
 class Conversation < ApplicationRecord
 
-  include AccessPolicy
+  include AccessPolicy, Notifier
 
   before_validation :set_seller, unless: :persisted?
   

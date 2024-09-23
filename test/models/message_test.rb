@@ -44,6 +44,16 @@ class MessageTest < ActiveSupport::TestCase
     assert_broadcasts stream_name, 1
   end
 
+  test "notifies recipient after creation" do
+    assert_difference "Conversations::Notification.count", 1 do
+    @conversation.messages.create(
+      from: @organization,
+      sender: @user,
+      body: "Ahoy"
+    )
+    end
+  end 
+
   private
 
   def signed_stream_name

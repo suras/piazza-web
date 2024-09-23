@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_09_12_051503) do
+ActiveRecord::Schema[7.1].define(version: 2024_09_23_112209) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -93,6 +93,15 @@ ActiveRecord::Schema[7.1].define(version: 2024_09_12_051503) do
     t.index ["seller_id"], name: "index_conversations_on_seller_id"
   end
 
+  create_table "conversations_notifications", force: :cascade do |t|
+    t.bigint "message_id"
+    t.bigint "recipient_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["message_id"], name: "index_conversations_notifications_on_message_id"
+    t.index ["recipient_id"], name: "index_conversations_notifications_on_recipient_id"
+  end
+
   create_table "listings", force: :cascade do |t|
     t.string "title"
     t.integer "price"
@@ -159,6 +168,8 @@ ActiveRecord::Schema[7.1].define(version: 2024_09_12_051503) do
   add_foreign_key "conversations", "listings", on_delete: :cascade
   add_foreign_key "conversations", "organizations", column: "buyer_id"
   add_foreign_key "conversations", "organizations", column: "seller_id"
+  add_foreign_key "conversations_notifications", "messages", on_delete: :cascade
+  add_foreign_key "conversations_notifications", "organizations", column: "recipient_id", on_delete: :cascade
   add_foreign_key "listings", "organizations"
   add_foreign_key "listings", "users", column: "creator_id"
   add_foreign_key "memberships", "organizations"
