@@ -1,0 +1,2 @@
+module Conversations::UnreadBadgeHelper
+end

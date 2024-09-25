@@ -58,6 +58,7 @@ Rails.application.routes.draw do
 
   resources :conversations, only: [:index, :show] do
     resources :messages, only: [:create, :index]
+    get :unread_badge, to: "conversations/unread_badge#show", on: :collection
   end
 
   mount Sidekiq::Web => '/sidekiq'

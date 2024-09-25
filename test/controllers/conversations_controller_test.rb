@@ -30,6 +30,15 @@ class ConversationsControllerTest < ActionDispatch::IntegrationTest
     assert_select "turbo-frame#conversation", 0
   end
 
-
+  test "viewing a coversation marks all notifications as read" do
+    @conversation.notifications.create(
+    message: messages(:kramer_jerry_1_3),
+    recipient: organizations(:jerry)
+    )
+    assert_not_empty @conversation.notifications.unread
+    get conversation_path(@conversation)
+    assert_response :ok
+    assert_empty @conversation.notifications.unread
+  end
 
 end
