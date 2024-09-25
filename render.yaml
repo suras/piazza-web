@@ -26,4 +26,6 @@ envVarGroups:
         value: your-domain-here.com
       - key: OUTBOUND_EMAIL_DOMAIN
         value: your-domain-here.com    
+      - key: INBOUND_EMAIL_DOMAIN
+        value: inbound.your-domain-here.com  
         

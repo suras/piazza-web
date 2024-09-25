@@ -1,0 +1,11 @@
+Date: Mon, 31 Oct 2022 15:00:00 +0000
+From: Jerry Seinfeld <jerry@seinfeld.com>
+To: {{ to }}
+Message-ID: <a15a7e4634f2bd32d4c6e92cd044621787b3c0d5@piazza.com>
+Subject: A plain text email
+Mime-Version: 1.0
+Content-Type: text/plain;
+  charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+We never should have landed a man on the moon. It's a mistake. Now everything is compared to that one accomplishment. I can't believe they could land a man on the moon ... and taste my coffee! I think we all would have been a lot happier if they hadn't landed a man on the moon. Then we'd go, 'They can't make a prescription bottle top that's easy to open?'

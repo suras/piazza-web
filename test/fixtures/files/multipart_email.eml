@@ -1,0 +1,41 @@
+Date: Mon, 31 Oct 2022 15:00:00 +0000
+From: Jerry Seinfeld <jerry@seinfeld.com>
+To: {{ to }}
+Message-ID: <a15a7e4634f2bd32d4c6e92cd044621787b3c0d5@piazza.com>
+Subject: An multipart email
+Mime-Version: 1.0
+Content-Type: multipart/alternative;
+ boundary="_mimepart_boundary";
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+
+--_mimepart_boundary
+Content-Type: text/plain;
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+We never should have landed a man on the moon. It's a mistake. Now everything is compared to that one accomplishment. I can't believe they could land a man on the moon ... and taste my coffee! I think we all would have been a lot happier if they hadn't landed a man on the moon. Then we'd go, 'They can't make a prescription bottle top that's easy to open?'
+
+--_mimepart_boundary
+Content-Type: text/html;
+ charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv=3D"Content-Type" content=3D"text/html; charset=3Dutf=
+-8" />
+    <meta name=3D"viewport" id=3D"viewport" content=3D"width=3Ddevice-wid=
+th,minimum-scale=3D1.0,maximum-scale=3D10.0,initial-scale=3D1.0" />
+  </head>
+
+  <body>
+    <p>
+      We never should have landed a man on the moon. It's a mistake. Now everything is compared to that one accomplishment. I can't believe they could land a man on the moon ... and taste my coffee! I think we all would have been a lot happier if they hadn't landed a man on the moon. Then we'd go, 'They can't make a prescription bottle top that's easy to open?
+    </p>
+  </body>
+</html>
+
+--_mimepart_boundary--

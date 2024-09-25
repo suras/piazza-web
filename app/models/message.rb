@@ -23,7 +23,7 @@
 #  fk_rails_...  (sender_id => users.id) ON DELETE => nullify
 #
 class Message < ApplicationRecord
-  include ActionView::RecordIdentifier
+  include EmailRespondable, ActionView::RecordIdentifier
 
   belongs_to :conversation
   belongs_to :from, class_name: "Organization"

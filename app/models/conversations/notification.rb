@@ -31,7 +31,8 @@ class Conversations::Notification < ApplicationRecord
 
       ConversationMailer.new_message(
         message,
-        to: to
+        to: to,
+        reply_to: message.response_email(recipient)
       ).deliver_later
     end
 

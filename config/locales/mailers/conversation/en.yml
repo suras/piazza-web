@@ -6,3 +6,12 @@ en:
       instructions: "You can reply to this email to respond or view
       the message in Piazza"
       button: View in Piazza
+  email_response_error:
+            subject: Something went wrong
+            heading: Something's gone horribly wrong
+            body: >
+                We're sorry, but something went wrong while
+                processing your response. Please log into Piazza
+                and try replying through the website.
+                button: View message
+            button: View message        

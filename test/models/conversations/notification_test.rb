@@ -53,9 +53,13 @@ class Conversations::NotificationTest < ActiveSupport::TestCase
     ConversationMailer,
       :new_message,
       args: [
-      @message,
-      to: users(:kramer),
+        @message,
+        to: users(:kramer),
+        reply_to: @message.response_email(@recipient)
       ]
     )
-end
+  end
+
+
+
 end
