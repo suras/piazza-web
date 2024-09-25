@@ -12,4 +12,9 @@ class Messages::EmailResponseParser
         strip_tags @mail.body.decoded
       end
     end
-  end
+
+    # using githubs email reply parser to get body even with replies (multiple replies are there)
+    def parsed_body
+      @parsed_body ||= EmailReplyParser.parse_reply plain_text_body
+    end
+end

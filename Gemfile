@@ -90,6 +90,8 @@ gem "browser", "~> 5.3"
 
 gem 'redis', '~> 4.0'
 
+gem "email_reply_parser", "~> 0.5.10"
+
 group :test do
   # Use system testing [https://guides.rubyonrails.org/testing.html#system-testing]
   gem "capybara"

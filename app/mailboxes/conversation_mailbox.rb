@@ -4,18 +4,26 @@ class ConversationMailbox < ApplicationMailbox
 
 
   def process
-    parser = Messages.EmailResponseParser.new(mail)
+    # Rails.logger.info "Processing message +++++++++++++++++++++"
+    parser = Messages::EmailResponseParser.new(mail)
 
     @conversation.messages.create(
-      body: parser.plain_text_body,
+      body: parser.parsed_body,
       from: @from,
       sender: sender
     )
+    # Rails.logger.info "created from +++++++++++++++++++++#{@from}"
+    # Rails.logger.info "created send +++++++++++++++++++++#{sender.id}"
+    # Rails.logger.info "created body +++++++++++++++++++++#{parser.plain_text_body}"
+
+    # Rails.logger.info "created message +++++++++++++++++++++#{@conversation.id}"
+
   end
 
 
   private
     def decode_identifier
+      # Rails.logger.info "Decoding message +++++++++++++++++++++"
        @conversation, @from = Message.decode_email_reply_identifier(signed_identifier)
     rescue    ActiveSupport::MessageVerifier::InvalidSignature
       bounce_with_error_email
@@ -36,6 +44,7 @@ class ConversationMailbox < ApplicationMailbox
     end
     
     def sender
+      # Rails.logger.info "Finding user +++++++++++++++++++++#{mail.from.first}"
        User.find_by(email: mail.from.first)
     end  
 end
